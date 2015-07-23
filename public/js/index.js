@@ -1,23 +1,26 @@
 ;Zepto(function($){
-
-    // var img = new Image(); 
-    // addSrc(img, "img-1.jpg");
-    // $(img).bind("load",function(e){
-    //     var type = getFileSize(this);
-    //     if(type = "w"){
-
-    //     }else
-    // });
-    
-    if(window.orientation == 0 || window.orientation == 180){
-
-    }else if(window.orientation == 90 || window.orientation == -90){
-
-    }
+    max = 5;
+    min = 1;
 
     $("img").attr("src", "img-1.jpg");
 
+    var img = new Image(); 
+    addSrc(img, "img-2.jpg");
+    
+    if(window.orientation == 0 || window.orientation == 180){
+        $("img").css({width:"100%",height:"auto"});
+    }else if(window.orientation == 90 || window.orientation == -90){
+        $("img").css({width:"auto",height:document.documentElement.clientHeight});
+    }
+    
     window.addEventListener("onorientationchange" in window ? "orientationchange" : "resize", orientationChange, false); 
+
+    var time = setInterval(function(){
+        $("img").attr("src", img.src);
+        var x = Math.floor(Math.random() * (max - min + 1)) + min;
+        addSrc(img, "img-" + x + ".jpg");
+    }, 5000);
+
 });
 
 function getFileSize(image){ 
@@ -37,11 +40,14 @@ function addSrc(image, filePath){
 
 function orientationChange(){ 
     var img  = $("img");
-    console.log(img);
     switch(window.orientation) { 
-        case 0: break; 
-        case 180: break;
-        case -90: break; 
-        case 90: break;  
+        case 0: img.css({width:"100%",height:"auto"});
+                break; 
+        case 180: img.css({width:"100%",height:"auto"});
+                break;
+        case -90: img.css({width:"auto",height:document.documentElement.clientHeight});
+                break; 
+        case 90: img.css({width:"auto",height:document.documentElement.clientHeight});
+                break;  
     } 
 } 

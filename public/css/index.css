@@ -2,4 +2,30 @@
     margin: 0;
     padding: 0;
 }
+.wrap{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+#container{
+    height: 100%;
+    display: flex;
+    display: -ms-flex;
+    display: -webkit-flex;
 
+    flex-flow: wrap;
+    -ms-flex-flow: wrap;
+    -webkit-flex-flow: wrap;
+    
+    justify-content:center;
+    -ms-justify-content:center;
+    -webkit-justify-content:center;
+    
+    align-items: center;
+    -ms-align-items: center;
+    -webkit-align-items: center;
+
+    align-content:center;
+    -ms-align-content:center;
+    -webkit-align-content:center;
+}
